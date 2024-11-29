@@ -2,12 +2,12 @@ import subprocess
 import sys
 
 # Install required packages
-def install_packages():
+#def install_packages():
     packages = ["pandas", "folium", "streamlit", "streamlit-folium", "googlemaps", "geopy"]
     for package in packages:
         subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
-install_packages()
+#install_packages()
 
 # Import libraries after installation
 import pandas as pd
