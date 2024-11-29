@@ -24,7 +24,7 @@ API_KEY = "AIzaSyCxMDrxcYW2Q5CMtqmm9TOlSi0iAVYhDJ0"
 def load_data():
     """Load geocoded data from a shared or public URL."""
     try:
-        return pd.read_csv(CSV_URL, encoding='ISO-8859-1')
+        return pd.read_csv(CSV_URL, encoding='ISO-8859-1', error_bad_lines=False, warn_bad_lines=True)
     except Exception as e:
         st.error(f"Error loading data: {e}")
         return pd.DataFrame()
