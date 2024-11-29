@@ -1,15 +1,4 @@
-#import subprocess
-#import sys
-
-# Install required packages
-#def install_packages():
-#    packages = ["pandas", "folium", "streamlit", "streamlit-folium", "googlemaps", "geopy"]
-#    for package in packages:
-#        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-#install_packages()
-
-# Import libraries after installation
+# Import libraries
 import pandas as pd
 import folium
 import streamlit as st
@@ -17,14 +6,16 @@ from streamlit_folium import folium_static
 import googlemaps
 from geopy.distance import geodesic
 
-# Replace local CSV path with a public URL
-CSV_URL = "https://github.com/AkeemElewuro/RockStoneLogisticsRecommender/blob/main/geocoded_data.csv"
+# Public URL for the CSV file (use raw link for direct download)
+CSV_URL = "https://raw.githubusercontent.com/AkeemElewuro/RockStoneLogisticsRecommender/main/geocoded_data.csv"
 API_KEY = "AIzaSyCxMDrxcYW2Q5CMtqmm9TOlSi0iAVYhDJ0"
 
 def load_data():
     """Load geocoded data from a shared or public URL."""
     try:
-        return pd.read_csv(CSV_URL, encoding='ISO-8859-1', on_bad_lines='skip')
+        data = pd.read_csv(CSV_URL, encoding='ISO-8859-1', on_bad_lines='skip')
+        st.write("Loaded Data Columns:", data.columns.tolist())  # Debugging: Show column names
+        return data
     except Exception as e:
         st.error(f"Error loading data: {e}")
         return pd.DataFrame()
