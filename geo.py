@@ -14,7 +14,7 @@ def load_data():
     """Load geocoded data from a shared or public URL."""
     try:
         data = pd.read_csv(CSV_URL, encoding='ISO-8859-1', on_bad_lines='skip')
-        st.write("Loaded Data Columns:", data.columns.tolist())  # Debugging: Show column names
+        #st.write("Loaded Data Columns:", data.columns.tolist())  # Debugging: Show column names
         return data
     except Exception as e:
         st.error(f"Error loading data: {e}")
